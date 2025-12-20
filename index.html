@@ -952,5 +952,86 @@
         });
     });
 </script>
+    <style>
+    /* ===== ESTILOS ESPECÍFICOS PARA SECCIÓN CONTACTO ===== */
+    
+    /* Gradiente para el sidebar de contacto */
+    .contact-sidebar {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    }
+    
+    /* Efecto de tarjeta elevada */
+    .contact-card {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Animación de entrada para la sección */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .contact-section {
+        animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Efecto para íconos de información */
+    .contact-info-icon {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Estilo para etiquetas de campos obligatorios */
+    .required-field::after {
+        content: " *";
+        color: #ef4444;
+    }
+    
+    /* Efecto de focus personalizado */
+    .custom-focus:focus {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        border-color: #3b82f6;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .contact-grid {
+            flex-direction: column;
+        }
+        
+        .contact-sidebar {
+            border-radius: 1rem 1rem 0 0;
+        }
+        
+        .contact-form-container {
+            border-radius: 0 0 1rem 1rem;
+        }
+    }
+    
+    /* Modo oscuro ajustes */
+    @media (prefers-color-scheme: dark) {
+        .contact-sidebar {
+            background: linear-gradient(135deg, #3730a3 0%, #5b21b6 100%);
+        }
+        
+        .contact-info-icon {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    }
+</style>
 </body>
 </html>
