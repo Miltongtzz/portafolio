@@ -378,6 +378,115 @@ body.color-scheme-cyan {
     100% { background-position: 100% 100%; }
 }
 
+/* Agrega esto en main.css, después de las variables */
+
+/* ===== MEJORA DE CONTRASTE PARA MODO CLARO ===== */
+:root:not(.dark-mode) {
+    /* Ajustar colores para mejor legibilidad en modo claro */
+    --color-text: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #64748b;
+    
+    /* Mejorar contraste de bordes */
+    --color-border: #cbd5e1;
+    
+    /* Ajustar sombras para modo claro */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Clases específicas para textos en modo claro */
+.light-mode-text {
+    color: var(--color-text-secondary);
+}
+
+.dark-mode .light-mode-text {
+    color: #cbd5e1; /* Más claro en modo oscuro */
+}
+
+/* Mejorar textos en secciones específicas */
+.skill-category p,
+.project-card p,
+.timeline-item p,
+.learning-card p {
+    color: var(--color-text-secondary);
+    transition: color var(--transition-base);
+}
+
+.dark-mode .skill-category p,
+.dark-mode .project-card p,
+.dark-mode .timeline-item p,
+.dark-mode .learning-card p {
+    color: #e2e8f0;
+}
+
+/* Mejorar contraste de textos descriptivos */
+.description-text {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+.dark-mode .description-text {
+    color: #cbd5e1;
+}
+
+/* Contraste mejorado para badges y etiquetas */
+.level-badge,
+.project-tag {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+.dark-mode .level-badge,
+.dark-mode .project-tag {
+    color: #f8fafc;
+}
+
+/* Ajuste específico para la sección "Sobre Mí" o textos largos */
+.about-text p,
+.philosophy-card p,
+.form-description {
+    color: var(--color-text-secondary);
+}
+
+.dark-mode .about-text p,
+.dark-mode .philosophy-card p,
+.dark-mode .form-description {
+    color: #e2e8f0;
+}
+
+/* Mejorar contraste en cards */
+.skill-category-compact,
+.learning-card {
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+}
+
+.dark-mode .skill-category-compact,
+.dark-mode .learning-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Ajuste para el texto del timeline */
+.timeline-content p {
+    color: var(--color-text-secondary);
+    margin-top: 0.5rem;
+}
+
+.dark-mode .timeline-content p {
+    color: #cbd5e1;
+}
+
+/* Clase utilitaria para forzar buen contraste */
+.high-contrast-text {
+    color: var(--color-text) !important;
+}
+
+.dark-mode .high-contrast-text {
+    color: #f1f5f9 !important;
+}
+
 /* ===== ESTILOS BASE MEJORADOS ===== */
 * {
     margin: 0;
@@ -900,7 +1009,7 @@ body {
     left: 0;
     right: 0;
     z-index: var(--z-fixed);
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -911,13 +1020,24 @@ body {
 }
 
 .dark-mode .header-glass {
-    background: rgba(10, 10, 15, 0.7);
+    background: rgba(10, 10, 15, 0.4);
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 
         0 4px 30px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Para hacerlo aún más transparente al hacer scroll */
+.header-glass.scrolled {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px) saturate(160%);
+}
+
+.dark-mode .header-glass.scrolled {
+    background: rgba(10, 10, 15, 0.3);
+    backdrop-filter: blur(20px) saturate(180%);
 }
 
 /* Efecto de distorsión sutil */
