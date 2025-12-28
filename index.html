@@ -4,172 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Milton Gutiérrez - Portfolio</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fuentes principales -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/form.css">
 
-    <!-- Fuentes para los temas -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Fuentes para temas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-    /* ESTO VA DENTRO DE <head> O AL INICIO DE <body> */
-    #name-error, #email-error, #subject-error, #message-error,
-    .error-message {
+    /* Corregir errores de validación del formulario */
+    .form-error {
         display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
     }
     
-    /* Forzar que inputs no tengan borde rojo inicial */
-    #name, #email, #subject, #message {
-        border-color: #d1d5db !important; /* gray-300 */
+    /* Inicializar Tailwind con colores personalizados */
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'primary': 'var(--color-primary)',
+                    'secondary': 'var(--color-secondary)',
+                    'accent': 'var(--color-accent)',
+                    'bg': 'var(--color-bg)',
+                    'text': 'var(--color-text)',
+                    'card': 'var(--color-card)',
+                    'border': 'var(--color-border)',
+                }
+            }
+        }
     }
-    
-    .dark #name, .dark #email, .dark #subject, .dark #message {
-        border-color: #374151 !important; /* gray-700 */
-    }
-</style>
+    </style>
 </head>
-<body class="bg-bg text-text">
+<body class="bg-bg text-text min-h-screen transition-colors duration-300">
 
-    <!-- En tu index.html, actualiza el header: -->
-<header class="header-glass py-4">
-    <nav class="container">
-        <div class="flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="logo-text">
-                miltong
-            </a>
-            
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-8">
-                <div class="nav-menu">
-                    <a href="#inicio" class="nav-link">Inicio</a>
-                    <a href="#proyectos" class="nav-link">Proyectos</a>
-                    <a href="#habilidades" class="nav-link">Habilidades</a>
-                    <a href="#contacto" class="nav-link">Contacto</a>
-                </div>
+    <!-- Header -->
+    <header class="header-glass py-4 fixed top-0 left-0 right-0 z-50">
+        <nav class="container">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="logo-text text-2xl font-bold">
+                    miltong
+                </a>
                 
-                <!-- Theme Controls -->
-                <div class="theme-controls">
-                    <div class="color-selector-glass">
-                        <div class="color-dot-glass" data-scheme="blue" title="Azul Profesional"></div>
-                        <div class="color-dot-glass" data-scheme="green" title="Verde Natural"></div>
-                        <div class="color-dot-glass" data-scheme="purple" title="Púrpura Creativo"></div>
-                        <div class="color-dot-glass" data-scheme="amber" title="Ámbar Energético"></div>
-                        <div class="color-dot-glass" data-scheme="neon" title="Rosa Neón"></div>
-                        <div class="color-dot-glass" data-scheme="cyan" title="Cian Profundo"></div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="nav-menu">
+                        <a href="#inicio" class="nav-link">Inicio</a>
+                        <a href="#proyectos" class="nav-link">Proyectos</a>
+                        <a href="#habilidades" class="nav-link">Habilidades</a>
+                        <a href="#contacto" class="nav-link">Contacto</a>
                     </div>
                     
-                    <button id="theme-toggle" class="theme-btn-glass">
-                        <i id="theme-icon" class="fas fa-moon"></i>
+                    <!-- Theme Controls -->
+                    <div class="theme-controls">
+                        <div class="color-selector-glass">
+                            <div class="color-dot-glass" data-scheme="blue" title="Azul Profesional"></div>
+                            <div class="color-dot-glass" data-scheme="green" title="Verde Natural"></div>
+                            <div class="color-dot-glass" data-scheme="purple" title="Púrpura Creativo"></div>
+                            <div class="color-dot-glass" data-scheme="amber" title="Ámbar Energético"></div>
+                            <div class="color-dot-glass" data-scheme="neon" title="Rosa Neón"></div>
+                            <div class="color-dot-glass" data-scheme="cyan" title="Cian Profundo"></div>
+                        </div>
+                        
+                        <button id="theme-toggle" class="theme-btn-glass" aria-label="Cambiar tema">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="theme-toggle-mobile" class="theme-btn-glass" aria-label="Cambiar tema">
+                        <i id="theme-icon-mobile" class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button id="menu-btn" class="mobile-menu-btn" aria-label="Abrir menú">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
             
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center space-x-4">
-                <button id="theme-toggle-mobile" class="theme-btn-glass">
-                    <i id="theme-icon-mobile" class="fas fa-moon"></i>
-                </button>
-                
-                <button id="menu-btn" class="p-2 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu-glass">
-            <div class="flex flex-col space-y-4">
-                <a href="#inicio" class="nav-link text-lg">Inicio</a>
-                <a href="#proyectos" class="nav-link text-lg">Proyectos</a>
-                <a href="#habilidades" class="nav-link text-lg">Habilidades</a>
-                <a href="#contacto" class="nav-link text-lg">Contacto</a>
-                
-                <div class="pt-4 border-t border-white/10">
-                    <div class="color-selector-glass justify-center">
-                        <div class="color-dot-glass" data-scheme="blue"></div>
-                        <div class="color-dot-glass" data-scheme="green"></div>
-                        <div class="color-dot-glass" data-scheme="purple"></div>
-                        <div class="color-dot-glass" data-scheme="amber"></div>
-                        <div class="color-dot-glass" data-scheme="neon"></div>
-                        <div class="color-dot-glass" data-scheme="cyan"></div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu-glass">
+                <div class="flex flex-col space-y-4">
+                    <a href="#inicio" class="nav-link text-lg py-2">Inicio</a>
+                    <a href="#proyectos" class="nav-link text-lg py-2">Proyectos</a>
+                    <a href="#habilidades" class="nav-link text-lg py-2">Habilidades</a>
+                    <a href="#contacto" class="nav-link text-lg py-2">Contacto</a>
+                    
+                    <div class="pt-4 border-t border-white/10">
+                        <div class="color-selector-glass justify-center">
+                            <div class="color-dot-glass" data-scheme="blue"></div>
+                            <div class="color-dot-glass" data-scheme="green"></div>
+                            <div class="color-dot-glass" data-scheme="purple"></div>
+                            <div class="color-dot-glass" data-scheme="amber"></div>
+                            <div class="color-dot-glass" data-scheme="neon"></div>
+                            <div class="color-dot-glass" data-scheme="cyan"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden hero-pattern">
+    <section id="inicio" class="min-h-screen flex items-center justify-center relative overflow-hidden hero-pattern pt-20">
         <div class="container mx-auto px-4 sm:px-6 py-16 lg:py-20 hero-content">
             <div class="flex flex-col lg:flex-row items-center justify-between">
                 <div class="lg:w-1/2 mb-12 lg:mb-0">
                     <div class="mb-4">
-                        <span class="px-4 py-2 bg-primary bg-opacity-10 text-primary rounded-full text-sm font-medium border border-primary border-opacity-20">Estudiante de Bachillerato en Informática</span>
+                        <span class="px-4 py-2 bg-primary bg-opacity-10 text-primary rounded-full text-sm font-medium border border-primary border-opacity-20">
+                            Estudiante de Bachillerato en Informática
+                        </span>
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Hola, soy <span class="gradient-text">Milton Gutiérrez</span></h1>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Hola, soy <span class="gradient-text">Milton Gutiérrez</span>
+                    </h1>
                     <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed high-contrast-text">
                         Desarrollador web con experiencia en creación de sistemas complejos usando PHP, MySQL y Tailwind CSS. 
                         Apasionado por la tecnología y con miras hacia la Ingeniería en Sistemas.
                     </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#proyectos" class="btn-outline">
+                    
+                    <!-- Botones alineados horizontalmente -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <a href="#proyectos" class="btn-primary">
                             <i class="fas fa-code mr-2"></i> Ver Proyectos
+                        </a>
+                        <a href="assets/cv-milton-gutierrez.pdf" download class="btn-outline">
+                            <i class="fas fa-download mr-2"></i> Descargar CV
                         </a>
                         <a href="#contacto" class="btn-outline">
                             <i class="fas fa-paper-plane mr-2"></i> Contactar
                         </a>
-                        
-                        <a href="assets/cv-milton-gutierrez.pdf" download class="btn-outline">
-                            <i class="fas fa-download mr-2"></i> Descargar CV
+                    </div>
+                    
+                    <!-- Botones sociales mejorados -->
+                    <div class="social-buttons">
+                        <a href="https://github.com/Milton-gz" target="_blank" class="social-btn github" title="GitHub" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/milton-gutierrez-rodriguez-27501639b" target="_blank" class="social-btn linkedin" title="LinkedIn" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/miltongutierrez971/" target="_blank" class="social-btn instagram" title="Instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/50379940919" target="_blank" class="social-btn whatsapp" title="WhatsApp" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
-                     <div class="social-buttons">
-                    <a href="https://github.com/tuusuario" target="_blank" class="social-btn github" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/tuusuario" target="_blank" class="social-btn linkedin" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://instagram.com/tuusuario" target="_blank" class="social-btn instagram" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/5211234567890" target="_blank" class="social-btn whatsapp" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                   
                 </div>
-                </div>
+                
                 <div class="lg:w-2/5 hero-visual">
                     <div class="relative">
                         <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full gradient-bg flex items-center justify-center floating shadow-2xl">
                             <i class="fas fa-laptop-code text-5xl lg:text-7xl text-white"></i>
-                        </div>
-                        <div class="absolute -top-4 -left-4 bg-accent text-white p-3 rounded-xl shadow-lg">
-
                         </div>
                     </div>
                 </div>
@@ -177,14 +180,14 @@
         </div>
 
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-            <a href="#sobre-mi" class="animate-bounce inline-flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border text-primary shadow-md">
+            <a href="#sobre-mi" class="animate-bounce inline-flex items-center justify-center w-10 h-10 rounded-full bg-card border border-border text-primary shadow-md" aria-label="Scroll down">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="sobre-mi" class="py-16 lg:py-20 bg-card transition-all duration-300">
+    <section id="sobre-mi" class="py-16 lg:py-20 bg-card transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-3xl font-bold text-center mb-4 section-title">Sobre Mí</h2>
             
@@ -198,26 +201,26 @@
                 </div>
                 
                 <div class="lg:w-3/5">
-                    <p class="text-lg mb-6">
+                    <p class="text-lg mb-6 high-contrast-text">
                         Soy un estudiante de <span class="font-semibold text-primary">Ing. en Sistemas</span>, 
                         con una pasión innata por la tecnología y el desarrollo de soluciones innovadoras. A mis 17 años, 
                         he logrado desarrollar sistemas web funcionales que incluyen bases de datos complejas, múltiples tipos de usuarios 
                         e interfaces intuitivas.
                     </p>
                     
-                    <p class="text-lg mb-6">
+                    <p class="text-lg mb-6 high-contrast-text">
                         Mi enfoque actual está en el <span class="font-semibold text-primary">desarrollo web</span>, pero también me interesan 
                         áreas como la <span class="font-semibold text-primary">ciberseguridad</span>, mantenimiento de equipos, programación y sistemas informáticos.
                     </p>
                     
                     <div class="philosophy-card p-6 my-8">
                         <h3 class="font-bold text-primary mb-2 text-lg">Mi Filosofía</h3>
-                        <p class="italic">"Cada línea de código es una oportunidad para crear, resolver y mejorar. La tecnología no es solo herramientas, 
+                        <p class="italic high-contrast-text">"Cada línea de código es una oportunidad para crear, resolver y mejorar. La tecnología no es solo herramientas, 
                         es el medio para construir soluciones que impacten positivamente en la educación y la sociedad."</p>
                     </div>
 
                     <div class="flex items-center mt-6 text-gray-600 dark:text-gray-400">
-                        <i class="fas fa-map-marker-alt mr-2 text-primary high-contrast-text"></i>
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
                         <span>El Salvador</span>
                     </div>
                 </div>
@@ -231,19 +234,19 @@
                     <div class="timeline-item">
                         <h4 class="font-bold text-lg">2021 - 2023</h4>
                         <p class="text-primary font-medium">Primeros Pasos en Programación</p>
-                        <p class="text-gray-600 dark:text-gray-300">Comencé mi camino autodidacta explorando HTML y CSS, descubriendo mi pasión por crear experiencias web y sentando las bases de mi carrera en desarrollo.</p>
+                        <p class="text-gray-600 dark:text-gray-300 high-contrast-text">Comencé mi camino autodidacta explorando HTML y CSS, descubriendo mi pasión por crear experiencias web y sentando las bases de mi carrera en desarrollo.</p>
                     </div>
                     
                     <div class="timeline-item">
                         <h4 class="font-bold text-lg">2024 - 2025</h4>
                         <p class="text-primary font-medium">Bachillerato en Informática</p>
-                        <p class="text-gray-600 dark:text-gray-300">Formación técnica especializada en programación, desarrollo de software, administración de redes y dominio del Paquete de Microsoft Office.</p>
+                        <p class="text-gray-600 dark:text-gray-300 high-contrast-text">Formación técnica especializada en programación, desarrollo de software, administración de redes y dominio del Paquete de Microsoft Office.</p>
                     </div>
 
                     <div class="timeline-item">
                         <h4 class="font-bold text-lg">2026 - Actualidad</h4>
                         <p class="text-primary font-medium">Desarrollo de Sistemas Web</p>
-                        <p class="text-gray-600 dark:text-gray-300">Creación de sistemas completos con autenticación multi-usuario, gestión de bases de datos relacionales y diseño de interfaces responsivas profesionales.</p>
+                        <p class="text-gray-600 dark:text-gray-300 high-contrast-text">Creación de sistemas completos con autenticación multi-usuario, gestión de bases de datos relacionales y diseño de interfaces responsivas profesionales.</p>
                     </div>
                 </div>
             </div>
@@ -251,7 +254,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="proyectos" class="py-16 lg:py-20 transition-all duration-300">
+    <section id="proyectos" class="py-16 lg:py-20 transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6">
             <h2 class="text-3xl font-bold text-center mb-4 section-title">Mis Proyectos</h2>
             <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-2xl mx-auto high-contrast-text">
@@ -274,17 +277,19 @@
                 </button>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8" id="projects-container">
+            <div class="projects-grid" id="projects-container">
                 <!-- Project 1 -->
-                <div class="project-card p-5 lg:p-6" data-categories="web php">
+                <div class="project-card" data-categories="web php">
                     <div class="project-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <span class="project-status bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Completado</span>
+                    <span class="project-status completed">Completado</span>
                     <h3 class="text-xl font-bold mb-3">Sistema de Servicio Social</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Sistema web completo con 3 tipos de usuarios (admin, estudiante, coordinador) para gestión del servicio social estudiantil.</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 high-contrast-text">
+                        Sistema web completo con 3 tipos de usuarios (admin, estudiante, coordinador) para gestión del servicio social estudiantil.
+                    </p>
                     
-                    <div class="project-features mb-4">
+                    <div class="project-features">
                         <h4 class="font-semibold text-primary mb-2">Características:</h4>
                         <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1 high-contrast-text">
                             <li class="flex items-center">
@@ -302,20 +307,21 @@
                         </ul>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">PHP</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">MySQL</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">Tailwind</span>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Tailwind</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <button class="project-detail-btn text-primary font-medium hover:underline inline-flex items-center" data-project="1">
+                    
+                    <div class="project-actions">
+                        <button class="project-detail-btn btn-outline" data-project="1" data-title="Sistema de Servicio Social">
                             Ver detalles <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                         <div class="flex space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Código Fuente">
+                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Código Fuente" aria-label="Ver código en GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Demo en Vivo">
+                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Demo en Vivo" aria-label="Ver demo">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
@@ -323,15 +329,17 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="project-card p-5 lg:p-6" data-categories="web php">
+                <div class="project-card" data-categories="web php">
                     <div class="project-icon">
                         <i class="fas fa-clipboard-list"></i>
                     </div>
-                    <span class="project-status bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">Completado</span>
+                    <span class="project-status completed">Completado</span>
                     <h3 class="text-xl font-bold mb-3">Sistema de Conducta Estudiantil</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">Sistema integral para administración de faltas estudiantiles con base de datos relacional compleja y reportes detallados.</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 high-contrast-text">
+                        Sistema integral para administración de faltas estudiantiles con base de datos relacional compleja y reportes detallados.
+                    </p>
                     
-                    <div class="project-features mb-4">
+                    <div class="project-features">
                         <h4 class="font-semibold text-primary mb-2">Características:</h4>
                         <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-1 high-contrast-text">
                             <li class="flex items-center">
@@ -349,21 +357,22 @@
                         </ul>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">PHP</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">MySQL</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">Librerías PHP</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm">InfinityFree</span>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Librerías PHP</span>
+                        <span class="project-tag">InfinityFree</span>
                     </div>
-                    <div class="flex justify-between items-center">
-                        <button class="project-detail-btn text-primary font-medium hover:underline inline-flex items-center" data-project="2">
+                    
+                    <div class="project-actions">
+                        <button class="project-detail-btn btn-outline" data-project="2" data-title="Sistema de Conducta Estudiantil">
                             Ver detalles <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                         <div class="flex space-x-3">
-                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Código Fuente">
+                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Código Fuente" aria-label="Ver código en GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Demo en Vivo">
+                            <a href="#" class="text-gray-500 hover:text-primary transition-colors duration-300" title="Demo en Vivo" aria-label="Ver demo">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         </div>
@@ -373,488 +382,482 @@
         </div>
     </section>
 
-<section id="habilidades" class="py-16 lg:py-20 bg-card transition-all duration-300">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 lg:mb-16">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 section-title">Mis Habilidades</h2>
-            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed high-contrast-text">
-                Tecnologías y herramientas que domino y utilizo para crear soluciones innovadoras.
-            </p>
-        </div>
-        
-        <!-- Grid Principal - Responsive para todas las pantallas -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-10 lg:mb-12">
-            
-            <!-- Lenguajes de Programación -->
-            <div class="skill-category lg:col-span-2 xl:col-span-1">
-                <div class="flex items-center mb-6">
-                    <div class="skill-icon-lg mr-4">
-                        <i class="fas fa-keyboard"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold">Lenguajes de Programación</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fab fa-php"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">PHP</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">SQL</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Desarrollo Web -->
-            <div class="skill-category">
-                <div class="flex items-center mb-6">
-                    <div class="skill-icon-lg mr-4">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold">Desarrollo Web</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fab fa-html5"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">HTML5</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">CSS3</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fab fa-css3-alt"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">Tailwind CSS</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bases de Datos -->
-            <div class="skill-category">
-                <div class="flex items-center mb-6">
-                    <div class="skill-icon-lg mr-4">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold">Bases de Datos</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">MySQL</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-          <!-- Herramientas de Desarrollo - EN UNA FILA DE 4 -->
-<!-- Herramientas de Desarrollo - FILA ÚNICA -->
-<div class="skill-category">
-    <div class="flex items-center mb-6">
-        <div class="skill-icon-lg mr-4">
-            <i class="fas fa-tools"></i>
-        </div>
-        <h3 class="text-2xl font-bold text-theme-primary">Herramientas</h3>
-    </div>
-    <div class="flex flex-col gap-4">
-        <!-- VS Code -->
-        <div class="skill-item hover-lift">
-            <div class="skill-icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <div class="skill-info">
-                <span class="skill-name text-theme-primary">VS Code</span>
-                <span class="level-badge level-intermediate">Intermedio</span>
-            </div>
-        </div>
-        
-        <!-- Git -->
-        <div class="skill-item hover-lift">
-            <div class="skill-icon">
-                <i class="fab fa-git-alt"></i>
-            </div>
-            <div class="skill-info">
-                <span class="skill-name text-theme-primary">Git</span>
-                <span class="level-badge level-beginner">Básico</span>
-            </div>
-        </div>
-        
-        <!-- GitHub -->
-        <div class="skill-item hover-lift">
-            <div class="skill-icon">
-                <i class="fab fa-github"></i>
-            </div>
-            <div class="skill-info">
-                <span class="skill-name text-theme-primary">GitHub</span>
-                <span class="level-badge level-beginner">Básico</span>
-            </div>
-        </div>
-        
-        <!-- Cisco Packet Tracer -->
-        <div class="skill-item hover-lift">
-            <div class="skill-icon">
-                <i class="fas fa-network-wired"></i>
-            </div>
-            <div class="skill-info">
-                <span class="skill-name text-theme-primary">Cisco Packet Tracer</span>
-                <span class="level-badge level-beginner">Básico</span>
-            </div>
-        </div>
-    </div>
-</div>
-            
-            <!-- Conocimientos Generales -->
-            <div class="skill-category">
-                <div class="flex items-center mb-6">
-                    <div class="skill-icon-lg mr-4">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold">Conocimientos</h3>
-                </div>
-                <div class="space-y-4">
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">Paquete de Office</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">IA y Prompts</span>
-                            <span class="level-badge level-intermediate">Intermedio</span>
-                        </div>
-                    </div>
-                    <div class="skill-item hover-lift">
-                        <div class="skill-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="skill-info">
-                            <span class="skill-name">Ciberseguridad</span>
-                            <span class="level-badge level-beginner">Básico</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tecnologías en Aprendizaje Continuo -->
-        <div class="mt-16 lg:mt-20">
-            <div class="text-center mb-10 lg:mb-12">
-                <div class="flex items-center justify-center mb-4">
-                    <i class="fas fa-graduation-cap text-3xl text-primary mr-4"></i>
-                    <h3 class="text-2xl md:text-3xl font-bold">Tecnologías en Aprendizaje Continuo</h3>
-                    <i class="fas fa-graduation-cap text-3xl text-primary ml-4"></i>
-                </div>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto high-contrast-text">
-                    Actualmente expandiendo mis conocimientos en estas tecnologías para convertirme en un desarrollador más completo
+    <!-- Skills Section -->
+    <section id="habilidades" class="py-16 lg:py-20 bg-card transition-all duration-300 scroll-mt-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 section-title">Mis Habilidades</h2>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed high-contrast-text">
+                    Tecnologías y herramientas que domino y utilizo para crear soluciones innovadoras.
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
-                <div class="learning-card hover-lift">
-                    <div class="learning-icon mb-4">
-                        <i class="fab fa-js-square"></i>
+            <!-- Grid Principal -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-10 lg:mb-12">
+                
+                <!-- Lenguajes de Programación -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-theme-primary">Lenguajes de Programación</h3>
                     </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">JavaScript ES6+</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Desarrollo frontend interactivo</p>
-                    <div class="skill-level flex justify-center">
-                        <div class="level-dot active"></div>
-                        <div class="level-dot active"></div>
-                        <div class="level-dot intermediate"></div>
-                        <div class="level-dot"></div>
-                        <div class="level-dot"></div>
+                    <div class="space-y-4">
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fab fa-php"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">PHP</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">SQL</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="learning-card hover-lift">
-                    <div class="learning-icon mb-4">
-                        <i class="fab fa-linux"></i>
+                <!-- Desarrollo Web -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-theme-primary">Desarrollo Web</h3>
                     </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">Arch Linux</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Administración de sistemas</p>
-                    <div class="skill-level flex justify-center">
-                        <div class="level-dot active"></div>
-                        <div class="level-dot active"></div>
-                        <div class="level-dot intermediate"></div>
-                        <div class="level-dot"></div>
-                        <div class="level-dot"></div>
-                    </div>
-                </div>
-                
-                <div class="learning-card hover-lift">
-                    <div class="learning-icon mb-4">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">Redes</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Fundamentos CCNA</p>
-                    <div class="skill-level flex justify-center">
-                        <div class="level-dot active"></div>
-                        <div class="level-dot intermediate"></div>
-                        <div class="level-dot"></div>
-                        <div class="level-dot"></div>
-                        <div class="level-dot"></div>
-                    </div>
-                </div>
-                
-                <div class="learning-card hover-lift">
-                    <div class="learning-icon mb-4">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">Python</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Programación versátil</p>
-                    <div class="skill-level flex justify-center">
-                        <div class="level-dot active"></div>
-                        <div class="level-dot active"></div>
-                        <div class="level-dot intermediate"></div>
-                        <div class="level-dot"></div>
-                        <div class="level-dot"></div>
+                    <div class="space-y-4">
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">HTML5</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">CSS3</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">Tailwind CSS</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="learning-card hover-lift">
-                    <div class="learning-icon mb-4">
-                        <i class="fas fa-cogs"></i>
+                <!-- Bases de Datos -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-theme-primary">Bases de Datos</h3>
                     </div>
-                    <h4 class="font-bold text-lg mb-2 text-center">Hardware</h4>
-                    <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Mantenimiento de PCs</p>
-                    <div class="skill-level flex justify-center">
-                        <div class="level-dot active"></div>
-                        <div class="level-dot active"></div>
-                        <div class="level-dot active"></div>
-                        <div class="level-dot intermediate"></div>
-                        <div class="level-dot"></div>
+                    <div class="space-y-4">
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">MySQL</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Herramientas de Desarrollo -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-theme-primary">Herramientas</h3>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">VS Code</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">Git</span>
+                                <span class="level-badge level-beginner">Básico</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">GitHub</span>
+                                <span class="level-badge level-beginner">Básico</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">Cisco Packet Tracer</span>
+                                <span class="level-badge level-beginner">Básico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Conocimientos Generales -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-theme-primary">Conocimientos</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">Paquete de Office</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">IA y Prompts</span>
+                                <span class="level-badge level-intermediate">Intermedio</span>
+                            </div>
+                        </div>
+                        <div class="skill-item hover-lift">
+                            <div class="skill-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name text-theme-primary">Ciberseguridad</span>
+                                <span class="level-badge level-beginner">Básico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tecnologías en Aprendizaje Continuo -->
+            <div class="mt-16 lg:mt-20">
+                <div class="text-center mb-10 lg:mb-12">
+                    <div class="flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-3xl text-primary mr-4"></i>
+                        <h3 class="text-2xl md:text-3xl font-bold">Tecnologías en Aprendizaje Continuo</h3>
+                        <i class="fas fa-graduation-cap text-3xl text-primary ml-4"></i>
+                    </div>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto high-contrast-text">
+                        Actualmente expandiendo mis conocimientos en estas tecnologías para convertirme en un desarrollador más completo
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+                    <div class="learning-card hover-lift">
+                        <div class="learning-icon mb-4">
+                            <i class="fab fa-js-square"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-center text-theme-primary">JavaScript ES6+</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Desarrollo frontend interactivo</p>
+                        <div class="skill-level flex justify-center">
+                            <div class="level-dot active"></div>
+                            <div class="level-dot active"></div>
+                            <div class="level-dot intermediate"></div>
+                            <div class="level-dot"></div>
+                            <div class="level-dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="learning-card hover-lift">
+                        <div class="learning-icon mb-4">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-center text-theme-primary">Arch Linux</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Administración de sistemas</p>
+                        <div class="skill-level flex justify-center">
+                            <div class="level-dot active"></div>
+                            <div class="level-dot active"></div>
+                            <div class="level-dot intermediate"></div>
+                            <div class="level-dot"></div>
+                            <div class="level-dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="learning-card hover-lift">
+                        <div class="learning-icon mb-4">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-center text-theme-primary">Redes</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Fundamentos CCNA</p>
+                        <div class="skill-level flex justify-center">
+                            <div class="level-dot active"></div>
+                            <div class="level-dot intermediate"></div>
+                            <div class="level-dot"></div>
+                            <div class="level-dot"></div>
+                            <div class="level-dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="learning-card hover-lift">
+                        <div class="learning-icon mb-4">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-center text-theme-primary">Python</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Programación versátil</p>
+                        <div class="skill-level flex justify-center">
+                            <div class="level-dot active"></div>
+                            <div class="level-dot active"></div>
+                            <div class="level-dot intermediate"></div>
+                            <div class="level-dot"></div>
+                            <div class="level-dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="learning-card hover-lift">
+                        <div class="learning-icon mb-4">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-center text-theme-primary">Hardware</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center mb-3">Mantenimiento de PCs</p>
+                        <div class="skill-level flex justify-center">
+                            <div class="level-dot active"></div>
+                            <div class="level-dot active"></div>
+                            <div class="level-dot active"></div>
+                            <div class="level-dot intermediate"></div>
+                            <div class="level-dot"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ======= Contact Section ======= -->
-<section id="contacto" class="py-16 lg:py-20 transition-all duration-300">
-    <div class="container mx-auto px-4 sm:px-6">
-        <h2 class="text-3xl font-bold mb-4 section-title text-center mx-auto">Contacto</h2>
-        <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-2xl mx-auto high-contrast-text">
-            ¿Tienes un proyecto en mente o quieres conocer más sobre mi trabajo? ¡No dudes en contactarme!
-        </p>
-        
-        <div class="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-800">
-            <div class="md:flex">
-                <!-- Información de contacto -->
-                <div class="md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-6 lg:p-8">
-                    <h3 class="text-2xl font-bold mb-6">Información de Contacto</h3>
-                    
-                    <div class="space-y-6 mb-8">
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Email</h4>
-                                <p class="text-blue-100">milton.gutierrez.tech@gmail.com</p>
-                            </div>
-                        </div>
+    <!-- Contact Section -->
+    <section id="contacto" class="py-16 lg:py-20 transition-all duration-300 scroll-mt-20">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl font-bold mb-4 section-title text-center mx-auto">Contacto</h2>
+            <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-2xl mx-auto high-contrast-text">
+                ¿Tienes un proyecto en mente o quieres conocer más sobre mi trabajo? ¡No dudes en contactarme!
+            </p>
+            
+            <div class="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-800">
+                <div class="md:flex">
+                    <!-- Información de contacto -->
+                    <div class="md:w-2/5 bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-6 lg:p-8">
+                        <h3 class="text-2xl font-bold mb-6">Información de Contacto</h3>
                         
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Teléfono</h4>
-                                <p class="text-blue-100">+503 7994 0919</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-1">Ubicación</h4>
-                                <p class="text-blue-100">El Salvador</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Redes sociales mejoradas -->
-<div class="text-center">
-    <p class="text-gray-600 dark:text-gray-400 mb-6 text-lg font-medium">Sígueme para más contenido</p>
-    <div class="flex justify-center space-x-5 md:space-x-6">
-        <a href="https://github.com/Miltongtzz" 
-           target="_blank"
-           rel="noopener noreferrer"
-           class="social-icon w-14 h-14 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg">
-            <i class="fab fa-github text-2xl"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/milton-gutierrez-rodriguez-27501639b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BQm21sCmjT0OZl3hqL6ES4w%3D%3D" 
-           target="_blank"
-           rel="noopener noreferrer"
-           class="social-icon w-14 h-14 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-blue-700 dark:hover:text-blue-400 transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg">
-            <i class="fab fa-linkedin-in text-2xl"></i>
-        </a>
-        <a href="https://www.instagram.com/miltongutierrez971/" 
-           target="_blank"
-           rel="noopener noreferrer"
-           class="social-icon w-14 h-14 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-pink-600 dark:hover:text-pink-400 transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg">
-            <i class="fab fa-instagram text-2xl"></i>
-        </a>
-    </div>
-</div>
-                    
-                    <div class="mt-8 p-4 bg-white/10 rounded-lg">
-                        <p class="text-sm text-blue-100">
-                            <i class="fas fa-clock mr-2"></i>
-                            Te responderé <span class="font-semibold">lo antes posible</span>
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Formulario -->
-                <div class="md:w-3/5 p-6 lg:p-8">
-                    <form id="contact-form" action="https://formsubmit.co/milton.gutierrez.tech@gmail.com" method="POST" class="space-y-6">
-                        <!-- Campos ocultos de FormSubmit -->
-                        <input type="hidden" name="_next" value="https://milton-gz.github.io/portafolio/gracias.html">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="Nuevo contacto desde Portfolio">
-                        <input type="text" name="_honey" style="display:none">
-                        
-                        <!-- Nombre y Email en fila -->
-                        <div class="grid md:grid-cols-2 gap-6">
-                           <div>
-                                <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
-                                    Nombre *
-                                </label>
-                                <input type="text" id="name" name="name" 
-                                       class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
-                                              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                                              bg-white dark:bg-gray-800 transition duration-300
-                                              placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                                       placeholder="Tu nombre o cómo quieres que te llame">
-                                <!-- SIN required, SIN minlength, SIN pattern, SIN title -->
-                                <div id="name-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></div>
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <p class="text-blue-100">milton.gutierrez.tech@gmail.com</p>
+                                </div>
                             </div>
                             
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Teléfono</h4>
+                                    <p class="text-blue-100">+503 7994 0919</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Ubicación</h4>
+                                    <p class="text-blue-100">El Salvador</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Redes sociales mejoradas -->
+                        <div class="text-center">
+                            <p class="text-blue-100 mb-6 text-lg font-medium">Sígueme para más contenido</p>
+                            <div class="flex justify-center space-x-5 md:space-x-6">
+                                <a href="https://github.com/Milton-gz" 
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="social-icon w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg"
+                                   aria-label="GitHub">
+                                    <i class="fab fa-github text-2xl"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/milton-gutierrez-rodriguez-27501639b" 
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="social-icon w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg"
+                                   aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in text-2xl"></i>
+                                </a>
+                                <a href="https://www.instagram.com/miltongutierrez971/" 
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   class="social-icon w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 hover:text-white transition-all duration-300 transform hover:-translate-y-2 shadow-md hover:shadow-lg"
+                                   aria-label="Instagram">
+                                    <i class="fab fa-instagram text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-white/10 rounded-lg">
+                            <p class="text-sm text-blue-100">
+                                <i class="fas fa-clock mr-2"></i>
+                                Te responderé <span class="font-semibold">lo antes posible</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Formulario -->
+                    <div class="md:w-3/5 p-6 lg:p-8">
+                        <form id="contact-form" action="https://formsubmit.co/milton.gutierrez.tech@gmail.com" method="POST" class="space-y-6" novalidate>
+                            <!-- Campos ocultos de FormSubmit -->
+                            <input type="hidden" name="_next" value="https://milton-gz.github.io/portafolio/gracias.html">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_subject" value="Nuevo contacto desde Portfolio">
+                            <input type="text" name="_honey" style="display:none">
+                            
+                            <!-- Nombre y Email en fila -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                               <div>
+                                    <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                                        Nombre *
+                                    </label>
+                                    <input type="text" id="name" name="name" 
+                                           class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
+                                                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                                                  bg-white dark:bg-gray-800 transition duration-300
+                                                  placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                           placeholder="Tu nombre o cómo quieres que te llame">
+                                    <div id="name-error" class="form-error hidden"></div>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                                        Email *
+                                    </label>
+                                    <input type="email" id="email" name="email"
+                                           class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
+                                                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                                                  bg-white dark:bg-gray-800 transition duration-300
+                                                  placeholder:text-gray-400 dark:placeholder:text-gray-500"
+                                           placeholder="Ej: juan@ejemplo.com">
+                                    <div id="email-error" class="form-error hidden"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Asunto -->
                             <div>
-                                <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
-                                    Email *
+                                <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                                    Asunto *
                                 </label>
-                                <input type="email" id="email" name="email" required 
+                                <input type="text" id="subject" name="subject"
                                        class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
                                               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                                               bg-white dark:bg-gray-800 transition duration-300
                                               placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                                       placeholder="Ej: juan@ejemplo.com">  <!-- CORREGIDO -->
-                                <div id="email-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></div>
+                                       placeholder="Ej: Consulta sobre desarrollo web">
+                                <div id="subject-error" class="form-error hidden"></div>
                             </div>
-                        </div>
-                        
-                        <!-- Asunto -->
-                        <div>
-                            <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
-                                Asunto *
-                            </label>
-                            <input type="text" id="subject" name="subject" required 
-                                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
-                                          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                                          bg-white dark:bg-gray-800 transition duration-300
-                                          placeholder:text-gray-400 dark:placeholder:text-gray-500"
-                                   placeholder="Ej: Consulta sobre desarrollo web"  
-                                   minlength="5">
-                            <div id="subject-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></div>
-                        </div>
-                        
-                        <!-- Mensaje -->
-                        <div>
-                            <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
-                                Mensaje *
-                            </label>
-                            <textarea id="message" name="message" rows="5" required 
-                                      class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
-                                             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                                             bg-white dark:bg-gray-800 transition duration-300
-                                             placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none"
-                                      placeholder="Hola Milton, me gustaría consultarte sobre..." 
-                                      minlength="10"></textarea>
-                            <div id="message-error" class="mt-2 text-sm text-red-600 dark:text-red-400 hidden"></div>
-                        </div>
-                        
-                        
-                       <!-- Botón CORREGIDO - type="submit" pero con captura temprana -->
-                        <button type="submit" id="submit-btn" 
-                                class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 
-                                       text-white font-semibold rounded-lg hover:shadow-lg 
-                                       transition-all duration-300 transform hover:-translate-y-0.5
-                                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                                       disabled:opacity-50 disabled:cursor-not-allowed">
-                            <i class="fas fa-paper-plane mr-2"></i> Enviar Mensaje
-                        </button>
-                                                
-                        <!-- Mensaje de estado -->
-                        <div id="form-status" class="p-4 rounded-lg hidden mt-4"></div>
-                        
-                        <!-- Nota de privacidad -->
-                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center pt-4">
-                            <i class="fas fa-lock mr-1"></i>
-                            Tus datos están seguros. No compartiré tu información con terceros.
-                        </p>
-                    </form>
+                            
+                            <!-- Mensaje -->
+                            <div>
+                                <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2 font-medium">
+                                    Mensaje *
+                                </label>
+                                <textarea id="message" name="message" rows="5"
+                                          class="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg 
+                                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+                                                 bg-white dark:bg-gray-800 transition duration-300
+                                                 placeholder:text-gray-400 dark:placeholder:text-gray-500 resize-none"
+                                          placeholder="Hola Milton, me gustaría consultarte sobre..."></textarea>
+                                <div id="message-error" class="form-error hidden"></div>
+                            </div>
+                            
+                            <!-- Botón de envío -->
+                            <button type="submit" id="submit-btn" 
+                                    class="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 
+                                           text-white font-semibold rounded-lg hover:shadow-lg 
+                                           transition-all duration-300 transform hover:-translate-y-0.5
+                                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                                           disabled:opacity-50 disabled:cursor-not-allowed
+                                           flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Enviar Mensaje
+                            </button>
+                            
+                            <!-- Mensaje de estado -->
+                            <div id="form-status" class="form-status hidden"></div>
+                            
+                            <!-- Nota de privacidad -->
+                            <p class="text-xs text-gray-500 dark:text-gray-400 text-center pt-4">
+                                <i class="fas fa-lock mr-1"></i>
+                                Tus datos están seguros. No compartiré tu información con terceros.
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-card py-8 border-t border-border transition-all duration-300">
+    <footer class="bg-card py-8 border-t border-border transition-all duration-300 mt-12">
         <div class="container mx-auto px-4 sm:px-6 text-center">
-            <p>&copy; 2025 Milton Gutiérrez. Todos los derechos reservados.</p>
-            <p class="mt-2 text-gray-500 dark:text-gray-400 high-contrast-text">Estudiante de Ing. en Sistemas</p>
+            <p class="text-gray-600 dark:text-gray-400">&copy; 2025 Milton Gutiérrez. Todos los derechos reservados.</p>
+            <p class="mt-2 text-gray-500 dark:text-gray-400">Estudiante de Ing. en Sistemas</p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="js/theme.js"></script>
-    <script src="js/contrast.js"></script>
+    <script src="js/skills.js"></script>
     <script src="js/projects.js"></script>
     <script src="js/main.js"></script>
     <script src="js/form.js"></script>
     
- 
 </body>
 </html>
