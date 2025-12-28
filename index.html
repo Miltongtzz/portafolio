@@ -26,11 +26,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
-    /* Corregir errores de validación del formulario */
-    .form-error {
-        display: none !important;
-    }
-    
     /* Inicializar Tailwind con colores personalizados */
     tailwind.config = {
         theme: {
@@ -46,6 +41,37 @@
                 }
             }
         }
+    }
+    
+    /* Estilos para la animación de tecnologías */
+    .tech-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        font-size: 3.5rem;
+        color: white;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    
+    .tech-icon.active {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    
+    /* Ajuste para habilidades igualadas */
+    .skill-category {
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .skill-items-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     </style>
 </head>
@@ -139,20 +165,20 @@
                         Apasionado por la tecnología y con miras hacia la Ingeniería en Sistemas.
                     </p>
                     
-                    <!-- Botones alineados horizontalmente -->
+                    <!-- Botones alineados horizontalmente con MISMO estilo -->
                     <div class="flex flex-wrap gap-4 mb-8">
-                        <a href="#proyectos" class="btn-primary">
+                        <a href="#proyectos" class="btn-primary flex items-center justify-center">
                             <i class="fas fa-code mr-2"></i> Ver Proyectos
                         </a>
-                        <a href="assets/cv-milton-gutierrez.pdf" download class="btn-outline">
+                        <a href="assets/cv-milton-gutierrez.pdf" download class="btn-primary flex items-center justify-center">
                             <i class="fas fa-download mr-2"></i> Descargar CV
                         </a>
-                        <a href="#contacto" class="btn-outline">
+                        <a href="#contacto" class="btn-primary flex items-center justify-center">
                             <i class="fas fa-paper-plane mr-2"></i> Contactar
                         </a>
                     </div>
                     
-                    <!-- Botones sociales mejorados -->
+                    <!-- Botones sociales -->
                     <div class="social-buttons">
                         <a href="https://github.com/Milton-gz" target="_blank" class="social-btn github" title="GitHub" aria-label="GitHub">
                             <i class="fab fa-github"></i>
@@ -189,13 +215,17 @@
     <!-- About Section -->
     <section id="sobre-mi" class="py-16 lg:py-20 bg-card transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl font-bold text-center mb-4 section-title">Sobre Mí</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title mx-auto">Sobre Mí</h2>
             
             <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 <div class="lg:w-2/5 flex justify-center">
                     <div class="relative">
-                        <div class="w-56 h-56 lg:w-64 lg:h-64 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-2xl">
-                            <span class="text-white text-6xl lg:text-7xl font-bold">MG</span>
+                        <!-- Círculo con animación de tecnologías -->
+                        <div class="w-56 h-56 lg:w-64 lg:h-64 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
+                            <!-- Iconos de tecnologías que rotarán -->
+                            <div id="tech-icons-container" class="relative w-full h-full">
+                                <!-- Los iconos se agregarán dinámicamente con JavaScript -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -256,7 +286,7 @@
     <!-- Projects Section -->
     <section id="proyectos" class="py-16 lg:py-20 transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl font-bold text-center mb-4 section-title">Mis Proyectos</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title mx-auto">Mis Proyectos</h2>
             <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-2xl mx-auto high-contrast-text">
                 Proyectos desarrollados que demuestran mis habilidades técnicas y capacidad para resolver problemas complejos.
             </p>
@@ -386,14 +416,14 @@
     <section id="habilidades" class="py-16 lg:py-20 bg-card transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 lg:mb-16">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 section-title">Mis Habilidades</h2>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 section-title mx-auto">Mis Habilidades</h2>
                 <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed high-contrast-text">
                     Tecnologías y herramientas que domino y utilizo para crear soluciones innovadoras.
                 </p>
             </div>
             
-            <!-- Grid Principal -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mb-10 lg:mb-12">
+            <!-- Grid Principal - TODAS las secciones tienen 3 habilidades -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-10 lg:mb-12">
                 
                 <!-- Lenguajes de Programación -->
                 <div class="skill-category">
@@ -403,23 +433,34 @@
                         </div>
                         <h3 class="text-2xl font-bold text-theme-primary">Lenguajes de Programación</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fab fa-php"></i>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-php"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">PHP</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">PHP</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">SQL</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">SQL</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Python</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -433,32 +474,34 @@
                         </div>
                         <h3 class="text-2xl font-bold text-theme-primary">Desarrollo Web</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">HTML5</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">HTML5</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">CSS3</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">CSS3</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
-                            </div>
-                        </div>
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">Tailwind CSS</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Tailwind CSS</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -472,14 +515,34 @@
                         </div>
                         <h3 class="text-2xl font-bold text-theme-primary">Bases de Datos</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-database"></i>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">MySQL</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">MySQL</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">SQL Server</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
+                            </div>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Diseño DB</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -493,44 +556,75 @@
                         </div>
                         <h3 class="text-2xl font-bold text-theme-primary">Herramientas</h3>
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-code"></i>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">VS Code</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">VS Code</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Git</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
+                            </div>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">GitHub</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fab fa-git-alt"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">Git</span>
-                                <span class="level-badge level-beginner">Básico</span>
-                            </div>
+                    </div>
+                </div>
+                
+                <!-- Redes y Sistemas -->
+                <div class="skill-category">
+                    <div class="flex items-center mb-6">
+                        <div class="skill-icon-lg mr-4">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                        
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fab fa-github"></i>
+                        <h3 class="text-2xl font-bold text-theme-primary">Redes y Sistemas</h3>
+                    </div>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Cisco Packet Tracer</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">GitHub</span>
-                                <span class="level-badge level-beginner">Básico</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fab fa-linux"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Arch Linux</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">Cisco Packet Tracer</span>
-                                <span class="level-badge level-beginner">Básico</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Fundamentos CCNA</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -544,32 +638,34 @@
                         </div>
                         <h3 class="text-2xl font-bold text-theme-primary">Conocimientos</h3>
                     </div>
-                    <div class="space-y-4">
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-file-alt"></i>
+                    <div class="skill-items-container">
+                        <div class="space-y-4">
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Paquete de Office</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">Paquete de Office</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">IA y Prompts</span>
+                                    <span class="level-badge level-intermediate">Intermedio</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">IA y Prompts</span>
-                                <span class="level-badge level-intermediate">Intermedio</span>
-                            </div>
-                        </div>
-                        <div class="skill-item hover-lift">
-                            <div class="skill-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="skill-info">
-                                <span class="skill-name text-theme-primary">Ciberseguridad</span>
-                                <span class="level-badge level-beginner">Básico</span>
+                            <div class="skill-item hover-lift">
+                                <div class="skill-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="skill-info">
+                                    <span class="skill-name text-theme-primary">Ciberseguridad</span>
+                                    <span class="level-badge level-beginner">Básico</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -672,7 +768,7 @@
     <!-- Contact Section -->
     <section id="contacto" class="py-16 lg:py-20 transition-all duration-300 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl font-bold mb-4 section-title text-center mx-auto">Contacto</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title mx-auto">Contacto</h2>
             <p class="text-lg text-center text-gray-600 dark:text-gray-300 mb-8 lg:mb-12 max-w-2xl mx-auto high-contrast-text">
                 ¿Tienes un proyecto en mente o quieres conocer más sobre mi trabajo? ¡No dudes en contactarme!
             </p>
@@ -851,6 +947,82 @@
             <p class="mt-2 text-gray-500 dark:text-gray-400">Estudiante de Ing. en Sistemas</p>
         </div>
     </footer>
+
+    <!-- JavaScript para animación de tecnologías -->
+    <script>
+    // Animación de tecnologías rotando
+    document.addEventListener('DOMContentLoaded', function() {
+        const techContainer = document.getElementById('tech-icons-container');
+        
+        if (techContainer) {
+            // Tecnologías a mostrar
+            const technologies = [
+                { icon: 'fab fa-html5', name: 'HTML5' },
+                { icon: 'fab fa-css3-alt', name: 'CSS3' },
+                { icon: 'fab fa-php', name: 'PHP' },
+                { icon: 'fas fa-database', name: 'MySQL' },
+                { icon: 'fab fa-js-square', name: 'JavaScript' },
+                { icon: 'fab fa-python', name: 'Python' },
+                { icon: 'fas fa-paint-brush', name: 'Tailwind' }
+            ];
+            
+            // Crear elementos de iconos
+            technologies.forEach((tech, index) => {
+                const iconElement = document.createElement('i');
+                iconElement.className = `tech-icon ${tech.icon}`;
+                iconElement.style.transitionDelay = `${index * 0.1}s`;
+                iconElement.setAttribute('title', tech.name);
+                techContainer.appendChild(iconElement);
+            });
+            
+            // Animar los iconos
+            let currentIndex = 0;
+            const techIcons = techContainer.querySelectorAll('.tech-icon');
+            
+            function showNextTech() {
+                // Ocultar todos los iconos
+                techIcons.forEach(icon => {
+                    icon.classList.remove('active');
+                });
+                
+                // Mostrar el siguiente icono
+                techIcons[currentIndex].classList.add('active');
+                
+                // Incrementar índice
+                currentIndex = (currentIndex + 1) % techIcons.length;
+            }
+            
+            // Mostrar primer icono inmediatamente
+            setTimeout(() => {
+                showNextTech();
+            }, 500);
+            
+            // Cambiar iconos cada 3 segundos
+            setInterval(showNextTech, 3000);
+        }
+        
+        // Scroll suave para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('.header-glass').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 
     <!-- JavaScript -->
     <script src="js/theme.js"></script>
